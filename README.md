@@ -1,2 +1,3 @@
 # NLP100  
-my answers
+
+http://www.cl.ecei.tohoku.ac.jp/nlp100/
