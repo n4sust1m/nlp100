@@ -1,17 +1,53 @@
-package main
+// http://www.cl.ecei.tohoku.ac.jp/nlp100/#sec06
+package nlp06
 
 import (
-	"fmt"
+	"regexp"
 	"strings"
 )
 
-func main () {
+func make2gram(str string) []string {
+	chars := regexp.MustCompile(``).Split(str, -1)
+	tmp := []string{}
+	for i := 0; i < len(chars); i = i + 2 {
+		c1 := chars[i]
+		c2 := ""
+		if i+1 < len(chars) {
+			c2 = chars[i+1]
+		}
+		tmp = append(tmp, c1+c2)
+	}
+	return tmp
+}
+
+func sum(x []string, y []string) []string {
+	tmp := append(x, y...)
+	result := []string{}
+	for i := range tmp {
+		c := tmp[i]
+		flg := false
+		for j := range result {
+			if strings.Compare(result[j], c) == 0 {
+				flg = true
+				break
+			}
+		}
+		if !flg {
+			result = append(result, c)
+		}
+	}
+	return result
+}
+
+/*
+
+func main() {
 	str1 := "paraparaparadise"
 	str2 := "paragraph"
 
 	x := c_bi_gram(str1)
 	y := c_bi_gram(str2)
-	
+
 	var sum []string
 	var diff []string
 	var prod []string
@@ -21,8 +57,8 @@ func main () {
 	for x_key := range x {
 		// 和集合
 		sum = append(sum, x_key)
-		
-		if _,ok := y[x_key]; ok {
+
+		if _, ok := y[x_key]; ok {
 			// 積集合
 			prod = append(prod, x_key)
 			if x_key == "se" {
@@ -45,18 +81,19 @@ func main () {
 	fmt.Println("\"se\" in 積集合? ==", is_se_in_prod)
 }
 
-func c_bi_gram (s string) map[string]int {
+func c_bi_gram(s string) map[string]int {
 	splitted_str := strings.Split(s, "")
 	length := len(splitted_str)
-	
+
 	m := map[string]int{}
-	for i := 0; length - 1 > i; i++ {
+	for i := 0; length-1 > i; i++ {
 		this_key := splitted_str[i] + splitted_str[i+1]
 		if _, ok := m[this_key]; ok {
 			m[this_key]++
-		}	else {
+		} else {
 			m[this_key] = 1
 		}
 	}
 	return m
 }
+*/
