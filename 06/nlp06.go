@@ -3,7 +3,8 @@ package nlp06
 
 import (
 	"regexp"
-	"strings"
+
+	mapset "github.com/deckarep/golang-set"
 )
 
 func make2gram(str string) []string {
@@ -20,23 +21,62 @@ func make2gram(str string) []string {
 	return tmp
 }
 
-func sum(x []string, y []string) []string {
-	tmp := append(x, y...)
-	result := []string{}
-	for i := range tmp {
-		c := tmp[i]
-		flg := false
-		for j := range result {
-			if strings.Compare(result[j], c) == 0 {
-				flg = true
-				break
-			}
-		}
-		if !flg {
-			result = append(result, c)
+func sum(x []string, y []string) mapset.Set {
+	result := mapset.NewSet()
+	for _, v := range x {
+		result.Add(v)
+	}
+	for _, v := range y {
+		result.Add(v)
+	}
+	return result
+}
+
+func diff(x []string, y []string) mapset.Set {
+	_x := mapset.NewSet()
+	for _, v := range x {
+		_x.Add(v)
+	}
+	_y := mapset.NewSet()
+	for _, v := range y {
+		_y.Add(v)
+	}
+
+	result := mapset.NewSet()
+	for v := range _x.Iter() {
+		if !_y.Contains(v) {
+			result.Add(v)
 		}
 	}
 	return result
+}
+
+func prod(x []string, y []string) mapset.Set {
+	_x := mapset.NewSet()
+	for _, v := range x {
+		_x.Add(v)
+	}
+	_y := mapset.NewSet()
+	for _, v := range y {
+		_y.Add(v)
+	}
+
+	result := mapset.NewSet()
+	for v := range _x.Iter() {
+		if _y.Contains(v) {
+			result.Add(v)
+		}
+	}
+	return result
+}
+
+func contain(x []string, v string) bool {
+	for _, _v := range x {
+		if v == _v {
+			return true
+		}
+	}
+	return false
 }
 
 /*

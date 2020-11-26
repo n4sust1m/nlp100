@@ -3,6 +3,8 @@ package nlp06
 import (
 	"reflect"
 	"testing"
+
+	mapset "github.com/deckarep/golang-set"
 )
 
 const (
@@ -31,10 +33,55 @@ func TestSum(t *testing.T) {
 	result1 := make2gram(str1)
 	result2 := make2gram(str2)
 
+	expectedSet := mapset.NewSet()
+	for _, v := range []string{"pa", "ra", "di", "se", "gr", "ap", "h"} {
+		expectedSet.Add(v)
+	}
+
 	result := sum(result1, result2)
-	if reflect.DeepEqual(result, []string{"pa", "ra", "di", "se", "gr", "ap", "h"}) {
-		t.Logf("verify: %#v", result)
+	if result.Equal(expectedSet) {
+		t.Logf("verify: %+v", result)
 	} else {
-		t.Errorf("Invalid Result: %#v", result)
+		t.Errorf("Invalid Result: %+v", result)
+	}
+}
+
+func TestDiff(t *testing.T) {
+	result1 := make2gram(str1)
+	result2 := make2gram(str2)
+	expectedSet := mapset.NewSet()
+	for _, v := range []string{"di", "se"} {
+		expectedSet.Add(v)
+	}
+
+	result := diff(result1, result2)
+	if !expectedSet.Equal(result) {
+		t.Errorf("invalid result: %+v, expect %+v", result, expectedSet)
+	} else {
+		t.Logf("verify: %+v", result)
+	}
+}
+
+func TestProd(t *testing.T) {
+	result1 := make2gram(str1)
+	result2 := make2gram(str2)
+	expectedSet := mapset.NewSet()
+	for _, v := range []string{"pa", "ra"} {
+		expectedSet.Add(v)
+	}
+	result := prod(result1, result2)
+	if !result.Equal(expectedSet) {
+		t.Errorf("invalid result: %+v, expect %+v", result, expectedSet)
+	} else {
+		t.Logf("verify: %+v", result)
+	}
+}
+
+func TestContain(t *testing.T) {
+	if !contain(make2gram(str1), "se") {
+		t.Errorf("invalid result")
+	}
+	if contain(make2gram(str2), "se") {
+		t.Errorf("invalid result")
 	}
 }
