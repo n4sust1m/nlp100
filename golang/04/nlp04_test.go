@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestPickInitial2Chars(t *testing.T) {
+func Test_pickInitial2Chars(t *testing.T) {
 
 	str := "Hi He Lied Because Boron Could Not Oxidize Fluorine. New Nations Might Also Sign Peace Security Clause. Arthur King Can."
 	opt := Option{[]int{1, 5, 6, 7, 8, 9, 15, 16, 19}}

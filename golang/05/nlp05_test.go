@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestMake2Gram(t *testing.T) {
+func Test_make2Gram(t *testing.T) {
 	str := "I am an NLPer"
 	result := make2Gram(str)
 

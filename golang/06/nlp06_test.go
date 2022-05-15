@@ -12,7 +12,7 @@ const (
 	str2 = "paragraph"
 )
 
-func TestMake2Gram(t *testing.T) {
+func Test_make2Gram(t *testing.T) {
 	result1 := make2gram(str1)
 	result2 := make2gram(str2)
 

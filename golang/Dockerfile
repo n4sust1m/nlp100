@@ -4,4 +4,5 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY go.mod /app
+COPY go.sum /app
 RUN go mod download

@@ -1,28 +1,26 @@
 package nlp00
 
-import "testing"
+import (
+	"testing"
+)
 
-func TestReverse(t *testing.T) {
-	type args struct {
-		str string
-	}
+func Test_reverse(t *testing.T) {
 	tests := []struct {
 		name string
-		args args
+		args string
 		want string
 	}{
 		{
 			name: "reverse \"stressed\"",
-			args: args{
-				str: "stressed",
-			},
+			args: "stressed",
 			want: "desserts",
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := reverse(tt.args.str); got != tt.want {
-				t.Errorf("reverse() = %v, want %v", got, tt.want)
+			if got := reverse(tt.args); got != tt.want {
+				t.Errorf("Reverse() = %v, want %v", got, tt.want)
 			}
 		})
 	}
