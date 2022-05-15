@@ -16,5 +16,7 @@ execute code
 ## by Perl
 
 ```
+$ cd ./perl
+$ carton install
 $ carton exec -- perl -Ilib ./xx/xxx.pl
 ```
