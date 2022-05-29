@@ -10,3 +10,7 @@ run test
 $ go run ./xx/xxx.go
 execute this code
 ```
+
+## 3x
+
+require `curl`, `mecab(w/mecab-ipadic)`
