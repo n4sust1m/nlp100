@@ -6,4 +6,9 @@ services:
     volumes:
       - ./golang:/app
       - ./assets:/app/assets
+  perl:
+    build: ./perl
+    volumes:
+      - ./perl:/app
+      - ./assets:/app/assets
     

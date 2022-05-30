@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 use File::Spec;
 
-my $filepath = File::Spec->rel2abs('./output/20_britain.txt');
+my $filepath = File::Spec->rel2abs('./assets/20_britain.txt');
 open(FH, '<', $filepath) or die $!;
 my @categories;
 while (<FH>) {
