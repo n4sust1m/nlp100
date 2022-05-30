@@ -5,4 +5,5 @@ services:
     build: ./golang
     volumes:
       - ./golang:/app
+      - ./assets:/app/assets
     

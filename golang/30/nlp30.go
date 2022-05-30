@@ -14,7 +14,7 @@ type Morpheme struct {
 }
 
 func LoadMecab() (*[]Morpheme, error) {
-	bytes, err := os.ReadFile("../tmp/neko.txt.mecab")
+	bytes, err := os.ReadFile("../assets/neko.txt.mecab")
 	if err != nil {
 		return nil, err
 	}

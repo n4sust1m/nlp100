@@ -1,8 +1,14 @@
+mkdir ./assets
+
 # 01x
-wget -P ./assets http://www.cl.ecei.tohoku.ac.jp/nlp100/data/hightemp.txt 
+curl http://www.cl.ecei.tohoku.ac.jp/nlp100/data/hightemp.txt --output "./assets/hightemp.txt"
 
 # 02x
-wget -P ./assets https://www.cl.ecei.tohoku.ac.jp/nlp100/data/jawiki-country.json.gz
+curl https://www.cl.ecei.tohoku.ac.jp/nlp100/data/jawiki-country.json.gz --output "./assets/jawiki-country.json.gz"
+
+# 04x
+curl http://www.cl.ecei.tohoku.ac.jp/nlp100/data/neko.txt --output "./assets/neko.txt"
+mecab ./assets/neko.txt -o ./assets/neko.txt.mecab
 
 # unzip files
 cd ./assets
