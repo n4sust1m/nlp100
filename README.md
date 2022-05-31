@@ -2,6 +2,12 @@
 
 http://www.cl.ecei.tohoku.ac.jp/nlp100/
 
+## perl
+
+```
+docker compose run --rm perl carton exec perl perl/nlpXX.pl
+```
+
 ## golang
 
 ```

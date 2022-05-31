@@ -4,11 +4,11 @@ services:
   golang:
     build: ./golang
     volumes:
-      - ./golang:/app
+      - ./golang:/app/golang
       - ./assets:/app/assets
   perl:
     build: ./perl
     volumes:
-      - ./perl:/app
+      - ./perl:/app/perl
       - ./assets:/app/assets
     
