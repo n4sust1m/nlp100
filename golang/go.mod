@@ -1,4 +1,4 @@
-module nlp100
+module github.com/n4sust1m/nlp100/golang
 
 go 1.18
 
