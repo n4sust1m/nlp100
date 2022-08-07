@@ -13,3 +13,9 @@ docker compose run --rm perl carton exec perl perl/nlpXX.pl
 ```
 docker compose run --rm golang go test ./${package}
 ```
+
+## dart
+
+```
+docker compose run --rm dart dart dart/**/*.dart 
+```

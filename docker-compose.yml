@@ -11,4 +11,9 @@ services:
     volumes:
       - ./perl:/app/perl
       - ./assets:/app/assets
+  dart:
+    build: ./dart
+    volumes:
+      - ./dart:/app/dart
+      - ./assets:/app/dart/assets
     
